@@ -184,7 +184,8 @@ d<?php
 
     function redirect($path = 'index.php')
     {
-        header("Location: $path");
+        $url = _WEB_HOST_ROOT.''.$path;
+        header("Location: $url");
         exit;
     }
 
@@ -235,7 +236,7 @@ function autoRemoveTokenLogin() {
 // luu thoi gian cuoi cung hoat dong
 function saveActivityTime(){
     $userId = isLogin()['user_id'];
-    update('users', ['lastActivity' => date('Y-m-d H:i:s')], "id = $userId");
+    update('users', ['last_activity' => date('Y-m-d H:i:s')], "id = $userId");
 }
 
 //lay thong tin user

@@ -18,15 +18,14 @@ if (isPost()) {
         if (!empty($queryUser)) {
             $userId = $queryUser['id'];
 
-            $forgotToken = sha1(uniqid() . time());
+            $forget_token = sha1(uniqid() . time());
             $dataUpdate = [
-                'forgotToken' => $forgotToken
+                'forget_token' => $forget_token
             ];
 
             $updateStatus = update('users', $dataUpdate, "id=$userId");
             if ($updateStatus) {
-                echo $forgotToken;
-                redirect('?module=auth&action=reset&token=' . $forgotToken);
+                redirect('?module=auth&action=reset&token=' . $forget_token);
             } else {
                 setFalshData('msg', 'Loi he thong! Ban khong the su dung chuc nang nay');
                 setFalshData('msg_type', 'danger');

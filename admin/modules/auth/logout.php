@@ -7,5 +7,5 @@ if (isLogin()) {
     echo $token;
     delete('login_token', "token='$token'");
     removeSession('loginToken');
-    redirect('?module=auth&action=login');
+    redirect('/admin/?module=auth&action=login');
 }

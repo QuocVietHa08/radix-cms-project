@@ -4,7 +4,9 @@ $data = [
     'pageTitle' => 'Đăng nhập hệ thống'
 ];
 layout('header-login','admin', $data);
-
+if(isLogin()){
+    redirect("/admin");
+}
 if (isPost()) {
     $body = getBody();
     if (!empty(trim($body['email'])) && !empty(trim($body['password']))) {
@@ -15,33 +17,33 @@ if (isPost()) {
 
         if (!empty($userQuery)) {
             $passwordHash = $userQuery['password'];
-            $userId = $userQuery['id'];
+            $user_id = $userQuery['id'];
             print_r($userQuery);
             if (password_verify($password, $passwordHash)) {
                 $tokenLogin = sha1(uniqid() . time());
 
-                $dataToken = [
-                    'user_id' => $userId,
-                    'token' => $tokenLogin,
-                    'createAt' => date('Y-m-d H:i:s')
-                ];
 
+                $dataToken = [
+                    'user_id' => $user_id,
+                    'token' => $tokenLogin,
+                    'create_at' => date('Y-m-d H:i:s')
+                ];
                 $insertTokenStatus = insert('login_token', $dataToken);
                 if ($insertTokenStatus) {
                     setSession('loginToken', $tokenLogin);
-                    redirect('?module=users');
+                    redirect('/admin');
                 } else {
-                    setFalshData('msg', 'Loi he thong ban khong the dang nhap luc nay');
+                    setFalshData('msg', 'Lỗi hệ thống bạn không thể đăng nhập lúc này');
                     setFalshData('msg_type', 'danger');
                     // redirect('?module=auth&action=login');
                 }
             } else {
-                setFalshData('msg', 'Mat khau khong chinh xac');
+                setFalshData('msg', 'Mật khẩu không chính xác');
                 setFalshData('msg_type', 'danger');
                 // redirect('?module=auth&action=login');
             }
         } else {
-            setFalshData('msg', 'Email khong ton tai trong he thong hoac chua duoc kích hoạt');
+            setFalshData('msg', 'Email không tồn tại trong hệ thống hoặc chưa được kích hoạt');
             setFalshData('msg_type', 'danger');
             // redirect('?module=auth&action=login');
         }
