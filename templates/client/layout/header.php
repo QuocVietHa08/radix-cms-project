@@ -9,6 +9,8 @@ if (!isLogin()) {
 autoRemoveTokenLogin();
 saveActivityTime();
 
+print_r($userDetail);
+
 ?>
 <html>
 <title>Quan ly nguoi dung</title>

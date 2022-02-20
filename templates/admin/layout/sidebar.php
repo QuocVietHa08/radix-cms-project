@@ -1,8 +1,12 @@
+<?php
+    $userId= isLogin()['user_id'];
+    $userDetail = getUserInfo($userId);
+ ?>
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      Edward Ha
+    <a href="<?php echo _WEB_HOST_ROOT_ADMIN; ?>" class="brand-link">
+      <?php echo $userDetail['email'] ?>
     </a>
 
     <!-- Sidebar -->
@@ -10,7 +14,9 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block">Edward Ha</a>
+          <a href="<?php echo getLinkAdmin('user', 'profile') ?>" class="d-block">
+            <?php echo $userDetail['fullname'] ?>
+          </a>
         </div>
       </div>
 

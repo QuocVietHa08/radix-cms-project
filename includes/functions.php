@@ -252,3 +252,18 @@ function activeMenuSidebar($module) {
     }
     return false;
 }
+
+
+function getLinkAdmin($module, $action='', $params=[]){
+    $url = _WEB_HOST_ROOT_ADMIN;
+    $url = $url.'?module='.$module;
+    if(!empty($action)){
+        $url .= '&action='.$action;
+    }
+    if(!empty($params)){
+        $paramsString = http_build_query($params);
+        $url = $ur.'&'.$paramsString;
+    }
+
+    return $url;
+}
