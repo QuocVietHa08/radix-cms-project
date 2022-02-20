@@ -1,3 +1,18 @@
+<?php 
+if(!defined('_INCODE')) die('Access Deined');
+
+  if(!isLogin()){
+    redirect('admin/?module=auth&action=login');
+  }else {
+    $userId= isLogin()['user_id'];
+    $userDetail = getUserInfo($userId);
+  }
+
+  saveActivityTime();
+  autoRemoveTokenLogin();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
