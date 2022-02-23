@@ -40,6 +40,7 @@ if(!defined('_INCODE')) die('Access Deined');
   <link rel="stylesheet" href="<?php echo _WEB_HOST_ADMIN_TEMPLATE ?>/assets/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="<?php echo _WEB_HOST_ADMIN_TEMPLATE ?>/assets/css/styles.css?ver=<?php echo rand(); ?>">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -84,7 +85,7 @@ if(!defined('_INCODE')) die('Access Deined');
         </a>
 
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
+            <a href="<?php echo getLinkAdmin('users', 'profile') ?>" class="dropdown-item">
             <i class="fas fa-angle-right  mr-2"></i> 
             <span>Thông tin cá nhân</span>
           </a>
