@@ -33,6 +33,30 @@
               </p>
             </a>
           </li>
+           <li class="nav-item has-treeview <?php echo activeMenuSidebar('groups') ? "menu-open" : false; ?>">
+            <a href="#" class="nav-link <?php echo activeMenuSidebar('groups') ? "active" : false; ?>">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Danh mục group
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo _WEB_HOST_ROOT_ADMIN.'?module=groups'; ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Danh sách</p>
+                </a>
+              </li>
+                <li class="nav-item">
+                <a href="<?php echo _WEB_HOST_ROOT_ADMIN.'?module=groups&action=add'; ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Thêm mới </p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>

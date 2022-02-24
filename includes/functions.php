@@ -269,8 +269,17 @@ function getLinkAdmin($module, $action='', $params=[]){
     }
     if(!empty($params)){
         $paramsString = http_build_query($params);
-        $url = $ur.'&'.$paramsString;
+        $url = $url.'&'.$paramsString;
     }
 
     return $url;
+}
+
+function getDateFormat($strDate, $format){
+    $dateObject = date_create($strDate);
+    if(!empty($dateObject)){
+        return date_format($dateObject, $format);
+    }
+
+    return false;
 }
