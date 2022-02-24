@@ -2,7 +2,7 @@
 if(!defined('_INCODE')) die('Access Deined');
 
   if(!isLogin()){
-    redirect('admin/?module=auth&action=login');
+    redirect('/admin/?module=auth&action=login');
   }else {
     $userId= isLogin()['user_id'];
     $userDetail = getUserInfo($userId);
@@ -89,7 +89,7 @@ if(!defined('_INCODE')) die('Access Deined');
             <i class="fas fa-angle-right  mr-2"></i> 
             <span>Thông tin cá nhân</span>
           </a>
-            <a href="#" class="dropdown-item">
+            <a href="<?php echo getLinkAdmin('users', 'change_password') ?>" class="dropdown-item">
             <i class="fas fa-angle-right  mr-2"></i> 
             <span>Đổi mật khẩu</span>
           </a>
