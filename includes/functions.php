@@ -184,15 +184,22 @@ d<?php
 
     function redirect($path = 'index.php')
     {
-        $url = _WEB_HOST_ROOT.''.$path;
+        $url = _WEB_HOST_ROOT.'/'.$path;
         header("Location: $url");
         exit;
     }
 
-    function form_error($fieldName, $errors, $beforeHtml = '', $afterHtml = '')
+   
+
+    function form_error($fieldName, $errors, $beforeHtml='', $afterHtml=''){
+    return (!empty($errors[$fieldName]))?$beforeHtml.reset($errors[$fieldName]).$afterHtml:null;
+    }
+
+
+    function form_error_fix($fieldName, $errors, $beforeHtml = '', $afterHtml = '')
     {
-        return (!empty($errors[$fieldName])) ?
-            $beforeHtml . reset($errors[$fieldName]) . $afterHtml  : null;
+        return (!is_null($errors[$fieldName])) ?
+            $beforeHtml . $errors[$fieldName] . $afterHtml  : null;
     }
 
     function old($fieldName, $oldData, $default = null)
